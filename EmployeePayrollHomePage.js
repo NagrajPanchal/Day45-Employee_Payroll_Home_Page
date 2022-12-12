@@ -1,6 +1,13 @@
 window.addEventListener('DOMContentLoaded', (event) => {
+    empPayrollList = getEmployeePayrollDataFromStorage();
+    document.querySelector(".emp-count").textContent = empPayrollList.length;
     createInnerHtml();
+    localStorage.removeItem('editEmp');
 });
+const getEmployeePayrollDataFromStorage = () => {
+    return localStorage.getItem('EmployeePayrollList') ? 
+                        JSON.parse(localStorage.getItem('EmployeePayrollList')) : [];
+}
 
 const createInnerHtml = () => {
     const headerHtml = "<th></th><th>Name</th><th>Gender</th><th>Department</th>" + 
@@ -34,30 +41,29 @@ const getDeptHtml = (deptList) => {
     return deptHtml;
 }
 
-
 const createEmployeePayrollJSON = () => {
     let empPayrollListLocal =[
         {
-            _name: 'Narayan Mahadevan',
+            _name: 'Prathamesh vardam',
             _gender: 'male',
             _department: [
                 'Engineering',
                 'Finance'
             ],
-            _salary:'500000',
+            _salary:'900000',
             _startDate: '29 Oct 2019',
             _note:'',
             _id: new Date().getTime(),
             _profilePic: '../assets/profile-images/Ellipse -2.png'
         },
         {
-            _name: 'Karina Kumari',
+            _name: 'Mika singh',
             _gender: 'Female',
             _department: [
                 'Finance'
             ],
             _salary:'5000000',
-            _startDate: '29 Sept 2020',
+            _startDate: '12 Feb 2021',
             _note:'',
             _id: new Date().getTime(),
             _profilePic: '../assets/profile-images/Ellipse -1.png'
